@@ -1,6 +1,7 @@
 @import "vars";
 @import "fonts";
 @import "reset";
+@import "libs";
 @import "global";
 
 .header {
@@ -130,11 +131,8 @@
     }
   }
   &__form-btn {
+    @extend %btn;
     border: none;
-    background-color: $accent;
-    color: #fff;
-    text-transform: uppercase;
-    box-shadow: 0px 7px 20px 0px rgba(255, 17, 48, 0.3);
     padding: 12px 26px;
     cursor: pointer;
   }
@@ -152,5 +150,83 @@
     vertical-align: middle;
   }
 }
+
+.top-slider {
+  background-image: url('../images/top-slider-bg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: $bg;
+  padding: 65px 0 45px;
+  &__container {
+    max-width: 1520px;
+  }
+ 
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__content {
+    padding-left: 155px;
+    padding-top: 125px;
+  }
+  
+  &__title {
+    max-width: 670px;
+    font-size: 58px;
+    line-height: 68px;
+    color: $title;
+    @extend %roboto-700;
+    margin-bottom: 35px;
+  }
+  &__text {
+    margin-bottom: 55px;
+    max-width: 470px;
+  }
+  &__link {
+    @extend %btn;
+    letter-spacing: 2px;
+    padding: 15px 35px;
+  }
+  .slick-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0 5px;
+    margin-top: -70px;
+    li{
+      line-height: 0;
+      button{
+        padding: 0;
+        font-size: 0;
+        background-color: transparent;
+        width: 26px;
+        height: 26px;
+        border-radius: 50%;
+        border: 1px solid transparent;
+        position: relative;
+        &::before {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 6px;
+          background-color: $default;
+          border-radius: 50%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+      &.slick-active{
+         button {
+          border: 1px solid $accent;
+          &::before {
+            background-color: $accent;
+          }
+         }
+      }
+    }
+  }
+}
+
+
 
 @import "media";
